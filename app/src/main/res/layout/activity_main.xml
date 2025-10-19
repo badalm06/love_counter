@@ -1,19 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="@color/light_pink"
     tools:context=".MainActivity">
 
+    <!-- Title -->
     <TextView
+        android:id="@+id/tv_in_love_for"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="💕 In love for  💕"
+        android:textSize="32sp"
+        android:textColor="#E91E63"
+        android:fontFamily="@font/agbalumo"
+        android:layout_marginBottom="24dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Years -->
+    <TextView
+        android:id="@+id/tv_years"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 years"
+        android:textSize="22sp"
+        android:textColor="#333333"
+        android:fontFamily="@font/adamina"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Months -->
+    <TextView
+        android:id="@+id/tv_months"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 months"
+        android:textSize="22sp"
+        android:textColor="#333333"
+        android:fontFamily="@font/adamina"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Days -->
+    <TextView
+        android:id="@+id/tv_days"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 days"
+        android:textSize="22sp"
+        android:textColor="#333333"
+        android:fontFamily="@font/adamina"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Hours -->
+    <TextView
+        android:id="@+id/tv_hours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 hours"
+        android:textSize="22sp"
+        android:textColor="#333333"
+        android:fontFamily="@font/adamina"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Minutes -->
+    <TextView
+        android:id="@+id/tv_minutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 minutes"
+        android:textSize="22sp"
+        android:textColor="#333333"
+        android:fontFamily="@font/adamina"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Seconds -->
+    <TextView
+        android:id="@+id/tv_seconds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 seconds"
+        android:textSize="22sp"
+        android:textColor="#333333"
+        android:fontFamily="@font/adamina" />
+
+</LinearLayout>

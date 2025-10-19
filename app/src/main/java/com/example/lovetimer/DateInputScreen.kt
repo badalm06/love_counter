@@ -1,6 +1,7 @@
 package com.example.lovetimer
 
 import WheelAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -78,12 +79,28 @@ class DateInputScreen : AppCompatActivity() {
             val selectedMin = getCenteredItem(rvMinute)
             val selectedAmPm = getCenteredItem(rvAmPm)
 
-            // You can use these strings however you need
-            val dateStr = "$selectedMonth $selectedDay, $selectedYear"
-            val timeStr = "$selectedHour:$selectedMin $selectedAmPm"
+            if (selectedMonth.isNotEmpty() && selectedDay.isNotEmpty() && selectedYear.isNotEmpty()) {
+                // Save date & time locally
+                val prefs = getSharedPreferences("LoveTimerPrefs", MODE_PRIVATE)
+                val editor = prefs.edit()
+                editor.putString("month", selectedMonth)
+                editor.putString("day", selectedDay)
+                editor.putString("year", selectedYear)
+                editor.putString("hour", selectedHour)
+                editor.putString("minute", selectedMin)
+                editor.putString("ampm", selectedAmPm)
+                editor.apply()
 
-            // For demo show logs or Toast
-            android.widget.Toast.makeText(this, "Date: $dateStr\nTime: $timeStr", android.widget.Toast.LENGTH_LONG).show()
+                android.widget.Toast.makeText(this, "Date Saved Successfully 💖", android.widget.Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+
+                // You can navigate to your main screen here
+                // startActivity(Intent(this, MainScreen::class.java))
+            } else {
+                android.widget.Toast.makeText(this, "Please select full date & time!", android.widget.Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
