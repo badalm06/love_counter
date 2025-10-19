@@ -1,90 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
+    android:fillViewport="true"
     android:background="@color/light_pink"
     tools:context=".MainActivity">
 
-    <!-- Title -->
-    <TextView
-        android:id="@+id/tv_in_love_for"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="💕 In love for  💕"
-        android:textSize="32sp"
-        android:textColor="#E91E63"
-        android:fontFamily="@font/agbalumo"
-        android:layout_marginBottom="24dp" />
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <!-- Years -->
-    <TextView
-        android:id="@+id/tv_years"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0 years"
-        android:textSize="22sp"
-        android:textColor="#333333"
-        android:fontFamily="@font/adamina"
-        android:layout_marginBottom="8dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <!-- Months -->
-    <TextView
-        android:id="@+id/tv_months"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0 months"
-        android:textSize="22sp"
-        android:textColor="#333333"
-        android:fontFamily="@font/adamina"
-        android:layout_marginBottom="8dp" />
+        <!-- Title -->
 
-    <!-- Days -->
-    <TextView
-        android:id="@+id/tv_days"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0 days"
-        android:textSize="22sp"
-        android:textColor="#333333"
-        android:fontFamily="@font/adamina"
-        android:layout_marginBottom="8dp" />
+        <!-- Years -->
+        <TextView
+            android:id="@+id/tv_in_love_for"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/agbalumo"
+            android:text="💕 In love for 💕"
+            android:textColor="#E91E63"
+            android:textSize="38sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Hours -->
-    <TextView
-        android:id="@+id/tv_hours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0 hours"
-        android:textSize="22sp"
-        android:textColor="#333333"
-        android:fontFamily="@font/adamina"
-        android:layout_marginBottom="8dp" />
+        <TextView
+            android:id="@+id/tv_years"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 years"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:layout_marginTop="18dp"
+            android:textColor="#333333"
+            android:fontFamily="@font/adamina"
+            app:layout_constraintTop_toBottomOf="@id/tv_in_love_for"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp" />
 
-    <!-- Minutes -->
-    <TextView
-        android:id="@+id/tv_minutes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0 minutes"
-        android:textSize="22sp"
-        android:textColor="#333333"
-        android:fontFamily="@font/adamina"
-        android:layout_marginBottom="8dp" />
+        <!-- Months -->
+        <TextView
+            android:id="@+id/tv_months"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 months"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:fontFamily="@font/adamina"
+            app:layout_constraintTop_toBottomOf="@id/tv_years"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp" />
 
-    <!-- Seconds -->
-    <TextView
-        android:id="@+id/tv_seconds"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0 seconds"
-        android:textSize="22sp"
-        android:textColor="#333333"
-        android:fontFamily="@font/adamina" />
+        <!-- Days -->
+        <TextView
+            android:id="@+id/tv_days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 days"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:fontFamily="@font/adamina"
+            app:layout_constraintTop_toBottomOf="@id/tv_months"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp" />
 
-</LinearLayout>
+        <!-- Hours -->
+        <TextView
+            android:id="@+id/tv_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 hours"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:fontFamily="@font/adamina"
+            app:layout_constraintTop_toBottomOf="@id/tv_days"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Minutes -->
+        <TextView
+            android:id="@+id/tv_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 minutes"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:fontFamily="@font/adamina"
+            app:layout_constraintTop_toBottomOf="@id/tv_hours"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Seconds -->
+        <TextView
+            android:id="@+id/tv_seconds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 seconds"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:fontFamily="@font/adamina"
+            app:layout_constraintTop_toBottomOf="@id/tv_minutes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Daily Quote Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/quoteCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="82dp"
+            app:cardBackgroundColor="@color/rose_pink"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="10dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_seconds"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/agbalumo"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="Today's Thought !!"
+                android:textSize="28sp"/>
+
+            <TextView
+                android:id="@+id/quoteText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/akaya_telivigala"
+                android:gravity="center"
+                android:padding="24dp"
+                android:layout_marginTop="36sp"
+                android:text="Relationship quote will appear here"
+                android:textColor="@color/black"
+                android:textSize="22sp" />
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>

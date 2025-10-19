@@ -18,8 +18,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvMinutes: TextView
     private lateinit var tvSeconds: TextView
 
+    private lateinit var quoteText: TextView // <-- Add this reference
+
     private val handler = Handler(Looper.getMainLooper())
     private var startDate: Date? = null
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +35,14 @@ class MainActivity : AppCompatActivity() {
         tvHours = findViewById(R.id.tv_hours)
         tvMinutes = findViewById(R.id.tv_minutes)
         tvSeconds = findViewById(R.id.tv_seconds)
+
+        quoteText = findViewById(R.id.quoteText)
+
+        // Show daily quote (rotates automatically)
+        val daysSinceEpoch = (System.currentTimeMillis() / (1000 * 60 * 60 * 24)).toInt()
+        val dailyQuote = QuotesProvider.quotes[daysSinceEpoch % QuotesProvider.quotes.size]
+        quoteText.text = dailyQuote
+
 
         // Retrieve stored values
         val prefs = getSharedPreferences("LoveTimerPrefs", MODE_PRIVATE)
