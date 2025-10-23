@@ -1,10 +1,15 @@
 package com.example.lovetimer
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.floor
@@ -28,6 +33,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
         tvYears = findViewById(R.id.tv_years)
         tvMonths = findViewById(R.id.tv_months)
@@ -43,26 +53,52 @@ class MainActivity : AppCompatActivity() {
         val dailyQuote = QuotesProvider.quotes[daysSinceEpoch % QuotesProvider.quotes.size]
         quoteText.text = dailyQuote
 
+        findViewById<ImageView>(R.id.settings_button).setOnClickListener {
+            startActivity(Intent(this, SettingScreen::class.java))
+        }
 
         // Retrieve stored values
         val prefs = getSharedPreferences("LoveTimerPrefs", MODE_PRIVATE)
+
         val month = prefs.getString("month", null)
         val day = prefs.getString("day", null)
         val year = prefs.getString("year", null)
-        val hour = prefs.getString("hour", "12")
-        val minute = prefs.getString("minute", "00")
-        val ampm = prefs.getString("ampm", "AM")
+
+        // Get stored time parts, allow empty or null
+        var hour = prefs.getString("hour", null)
+        var minute = prefs.getString("minute", null)
+        var ampm = prefs.getString("ampm", null)
+
+        // Get current local time parts
+        val cal = Calendar.getInstance()
+        val currentHour = if (cal.get(Calendar.HOUR) == 0) 12 else cal.get(Calendar.HOUR)
+        val currentMinute = cal.get(Calendar.MINUTE)
+        val currentAmPm = if (cal.get(Calendar.AM_PM) == Calendar.AM) "AM" else "PM"
+
+        // Replace empty or null time parts with current time counterparts
+        if (hour.isNullOrEmpty() || hour == "") hour = currentHour.toString().padStart(2, '0')
+        if (minute.isNullOrEmpty() || minute == "") minute = currentMinute.toString().padStart(2, '0')
+        if (ampm.isNullOrEmpty() || ampm == "") ampm = currentAmPm
 
         if (month != null && day != null && year != null) {
             val dateString = "$month $day, $year $hour:$minute $ampm"
-            val sdf = SimpleDateFormat("MMM dd, yyyy hh:mm a", Locale.getDefault())
-            startDate = sdf.parse(dateString)
+            val sdf = SimpleDateFormat("MMMM dd, yyyy hh:mm a", Locale.getDefault())
+            try {
+                startDate = sdf.parse(dateString)
+                startUpdatingTimer()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                startDate = null
+            }
+        } else {
+            startDate = null
         }
 
         startDate?.let {
             startUpdatingTimer()
         }
     }
+
 
     private fun startUpdatingTimer() {
         handler.post(object : Runnable {
