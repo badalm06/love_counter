@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Love Timer"
-                android:textSize="24sp"
+                android:textSize="32sp"
                 android:textColor="#E91E63"
                 android:textStyle="bold"
                 android:fontFamily="@font/agbalumo"
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginTop="56dp"
+                android:layout_marginTop="42dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -192,6 +192,7 @@
                     android:fontFamily="@font/agbalumo"
                     android:gravity="center_horizontal"
                     android:text="Today's Thought !!"
+                    android:textColor="@color/black"
                     android:textSize="28sp" />
 
                 <TextView
