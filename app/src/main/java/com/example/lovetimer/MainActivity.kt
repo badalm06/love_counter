@@ -57,6 +57,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, SettingScreen::class.java))
         }
 
+        findViewById<Button>(R.id.btn_add_special_date).setOnClickListener {
+            startActivity(Intent(this, AddSpecialDateActivity::class.java))
+        }
+
         // Retrieve stored values
         val prefs = getSharedPreferences("LoveTimerPrefs", MODE_PRIVATE)
 
